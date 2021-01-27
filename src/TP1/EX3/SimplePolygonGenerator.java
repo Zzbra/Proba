@@ -3,6 +3,7 @@ package TP1.EX3;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class SimplePolygonGenerator {
     public static PolygoneListe genetatePolygon(int nbSommets, double valMax){
@@ -16,10 +17,15 @@ public class SimplePolygonGenerator {
         }
         Collections.sort(radValues);
         for (int i = 0; i < nbSommets; i++) {
-            double x = Math.cos(radValues.get(i));
-            double y = Math.sin(radValues.get(i));
-            xValues[i] = x;
-            yValues[i] = y;
+            double radval = radValues.get(i);
+            double x = Math.cos(radval);
+            double y = Math.sin(radval);
+            double random =ThreadLocalRandom.current().nextDouble(0.1, 1);
+            x *= random;
+            y *= random;
+            System.out.println(radval + " " + (x+1) + " " + (y+1));
+            xValues[i] = (x+1)/2;
+            yValues[i] = (y+1)/2;
         }
         return  new PolygoneListe(xValues, yValues, 1);
     }

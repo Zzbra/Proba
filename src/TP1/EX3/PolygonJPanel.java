@@ -19,8 +19,8 @@ public class PolygonJPanel extends JPanel {
         int xValues[] = new int[polygoneListe.size()];
         int yValues[] = new int[polygoneListe.size()];
         for (int i = 0; i < polygoneListe.size(); i++) {
-            xValues[i] = (int)(polygoneListe.getSommet(i).getX()*width/polygoneListe.getValeurMax());
-            yValues[i] = (int)(polygoneListe.getSommet(i).getY()*width/polygoneListe.getValeurMax());
+            xValues[i] = (int)(polygoneListe.getSommet(i).getX()* width/polygoneListe.getValeurMax());
+            yValues[i] = (int)(polygoneListe.getSommet(i).getY()*height/polygoneListe.getValeurMax());
         }
         Polygon polygon = new Polygon( xValues, yValues, polygoneListe.size());
         g.fillPolygon(polygon);

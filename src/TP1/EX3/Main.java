@@ -8,7 +8,8 @@ public class Main {
         double valeursX2[] = {2.5, 2.5, 7.5, 7.5};
         double valeursY2[] = {2.5, 7.5, 7.5, 2.5};
 
-        PolygoneListe polygoneListe = new PolygoneListe(valeursX, valeursY, valeurMax);
+//        PolygoneListe polygoneListe = new PolygoneListe(valeursX, valeursY, valeurMax);
+        PolygoneListe polygoneListe = SimplePolygonGenerator.genetatePolygon(20,1);
         DrawPolygon.draw(polygoneListe);
 
 //        System.out.println(polygoneListe.contient(new Point2D(0, 0)));
@@ -41,6 +42,6 @@ public class Main {
             somme -= polygoneListe.getSommet(i).getY() * polygoneListe.getSommet(i+1).getX();
         }
         // Ici, sans le *-1 (-2.0) on obtient -(l'aire). C'est surement du au sens de rotation de l'ordre des sommets
-        return somme/-2.0;
+        return somme/2.0;
     }
 }
