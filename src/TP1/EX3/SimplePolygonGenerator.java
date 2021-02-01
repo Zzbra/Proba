@@ -23,7 +23,6 @@ public class SimplePolygonGenerator {
             double random =ThreadLocalRandom.current().nextDouble(0.1, 1);
             x *= random;
             y *= random;
-            System.out.println(radval + " " + (x+1) + " " + (y+1));
             xValues[i] = (x+1)/2;
             yValues[i] = (y+1)/2;
         }
