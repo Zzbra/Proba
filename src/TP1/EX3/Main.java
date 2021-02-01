@@ -9,7 +9,7 @@ public class Main {
         double valeursY2[] = {2.5, 7.5, 7.5, 2.5};
 
 //        PolygoneListe polygoneListe = new PolygoneListe(valeursX, valeursY, valeurMax);
-        PolygoneListe polygoneListe = SimplePolygonGenerator.genetatePolygon(20,1);
+        PolygoneListe polygoneListe = SimplePolygonGenerator.genetatePolygon(50,1);
         DrawPolygon.draw(polygoneListe);
 
 //        System.out.println(polygoneListe.contient(new Point2D(0, 0)));
