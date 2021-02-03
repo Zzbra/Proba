@@ -11,9 +11,9 @@ import TP1.EX3.EX3;
 public class Main {
     // Les compaisons sont commentées car elles prennent un peu de temps
     public static void main(String[] args) throws InterruptedException {
-        testExercice1();
+//        testExercice1();
 //        ComparaisonEx1.main(null);
-        testExercice2();
+//        testExercice2();
 //        ComparaisonEx2.main(null);
         testExercice3();
     }
@@ -37,8 +37,8 @@ public class Main {
     // et le nombre de sommets dans le cas du polygone
     private static void testExercice3() throws InterruptedException {
         System.out.printf("Méhode Monté Carlo et Lancet pour un carré:\n");
-        EX3.main(true, 100, 0);
+        EX3.main(true, 100, 0, 10_000_000);
         System.out.printf("Méhode Monté Carlo et Lancet pour un polygone simple généré aléatoirement:\n");
-        EX3.main(false, 100, 50);
+        EX3.main(false, 100, 50, 10_000_000);
     }
 }

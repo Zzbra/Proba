@@ -8,23 +8,32 @@ import TP1.Util.SimplePolygonGenerator;
 import java.awt.*;
 
 public class EX3 {
-    public static void main(Boolean carre, double valeurMax, int nbSommets) throws InterruptedException {
+    public static void main(Boolean carre, double valeurMax, int nbSommets, int nbItMonte) throws InterruptedException {
        PolygoneListe polygoneListe = null;
         if(carre){
             double valeursX[] = {0.25 * valeurMax, 0.25 * valeurMax, 0.75 * valeurMax, 0.75 * valeurMax};
             double valeursY[] = {0.25 * valeurMax, 0.75 * valeurMax, 0.75 * valeurMax, 0.25 * valeurMax};
             polygoneListe = new PolygoneListe(valeursX, valeursY, valeurMax);
         }else{
-            polygoneListe = SimplePolygonGenerator.genetatePolygon(50,valeurMax);
+            polygoneListe = SimplePolygonGenerator.genetatePolygon(nbSommets,valeurMax);
         }
         Drawer drawer = new Drawer(valeurMax);
         drawer.draw(polygoneListe);
-        Thread.sleep(1000);
-        System.out.println("Monte Carlo:\t" + monteCarlo(polygoneListe, valeurMax, 10_000_000, drawer));
-        System.out.println("Lacet:\t\t\t" + formuleEnLacet(polygoneListe));
+        monteCarlo(polygoneListe, valeurMax, 10_000_000, drawer, true);
+        double debutMonte = System.currentTimeMillis();
+        System.out.printf("Monte Carlo:\ttemps = ");
+        double aireMonte = monteCarlo(polygoneListe, valeurMax, 10_000_000, drawer, false);
+        double tempsMonte = System.currentTimeMillis() - debutMonte;
+        System.out.println(tempsMonte + "ms \tAire =" + aireMonte);
+
+        double debutLacet = System.currentTimeMillis();
+        double aireLacet = formuleEnLacet(polygoneListe);
+        double tempsLacet = System.currentTimeMillis() - debutLacet;
+        System.out.println("Lacet:\t\t\ttemps = " + tempsLacet +
+                "ms \t\tAire = " + aireLacet);
     }
 
-    private static double monteCarlo(PolygoneListe polygoneListe, double valeurMax, double nbIterations, Drawer drawer){
+    private static double monteCarlo(PolygoneListe polygoneListe, double valeurMax, double nbIterations, Drawer drawer, boolean draw){
         double c = 0;
         for (int i = 0; i < nbIterations; i++) {
             Point2D point = new Point2D(Math.random() * valeurMax, Math.random() * valeurMax);
@@ -33,7 +42,8 @@ public class EX3 {
                 c++;
                 color = Color.cyan;
             }
-            drawer.draw(point, color);
+            if(draw)
+                drawer.draw(point, color);
         }
 
         return c*valeurMax*valeurMax/nbIterations;
