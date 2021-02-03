@@ -8,6 +8,7 @@ public class MyCanvas {
     JLabel view;
     BufferedImage surface;
     int width, height;
+    double valMax;
     public MyCanvas(int width, int height){
         this.width = width;
         this.height = height;
@@ -17,6 +18,7 @@ public class MyCanvas {
 
     public void drawPolygon(PolygoneListe polygoneListe){
         Graphics g = surface.getGraphics();
+        valMax = polygoneListe.getValeurMax();
         int[] xValues = new int[polygoneListe.size()];
         int[] yValues = new int[polygoneListe.size()];
         for (int i = 0; i < polygoneListe.size(); i++) {
@@ -32,8 +34,8 @@ public class MyCanvas {
     public void drawPoint(Point2D point, Color color){
         Graphics2D g2d = (Graphics2D) surface.getGraphics();
         g2d.setColor(color);
-        int x = (int) (point.getX() * width);
-        int y = (int) (point.getY() * height);
+        int x = (int) (point.getX()/valMax * width);
+        int y = (int) (point.getY()/valMax * height);
         g2d.drawLine(x, y, x, y);
         g2d.dispose();
         view.repaint();

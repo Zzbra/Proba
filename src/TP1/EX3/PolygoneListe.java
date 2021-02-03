@@ -13,6 +13,12 @@ public class PolygoneListe {
         }
     }
 
+    public void printSommets(){
+        for (int i = 0; i < sommets.size(); i++) {
+            System.out.println("Sommet" + (i+1) + ": x = " + sommets.get(i).getX() + "; y = " + sommets.get(i).getY() + ";");
+        }
+    }
+
     public double getValeurMax() {
         return valeurMax;
     }

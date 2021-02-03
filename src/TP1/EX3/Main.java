@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class Main {
     public static void main(String[] args) {
-        double valeurMax = 1;
+        double valeurMax = 100;
         double valeursX[] = {0.25 * valeurMax, 0.25 * valeurMax, 0.75 * valeurMax, 0.75 * valeurMax};
         double valeursY[] = {0.25 * valeurMax, 0.75 * valeurMax, 0.75 * valeurMax, 0.25 * valeurMax};
 
@@ -12,7 +12,7 @@ public class Main {
 //        PolygoneListe polygoneListe = SimplePolygonGenerator.genetatePolygon(50,1);
         Drawer drawer = new Drawer();
         drawer.draw(polygoneListe);
-
+        polygoneListe.printSommets();
         System.out.println("Monte Carlo: " + monteCarlo(polygoneListe, valeurMax, 10_000_000, drawer));
         System.out.println("Lacet: " + formuleEnLacet(polygoneListe));
     }
@@ -29,7 +29,7 @@ public class Main {
             drawer.draw(point, color);
         }
 
-        return c*valeurMax/nbIterations;
+        return c*valeurMax*valeurMax/nbIterations;
     }
 
     private static double formuleEnLacet(PolygoneListe polygoneListe){
