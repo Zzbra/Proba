@@ -12,7 +12,7 @@ public class ComparaisonEx1 {
         System.out.println("Il faut " + n + " itérations pour la 1ère méthode");
 
         int m = 10;
-        while(Math.abs(MonteCarlo1.main(m, false) - pi) > 0.0001){
+        while(Math.abs(MonteCarlo2.main(m, false) - pi) > 0.0001){
             m *= 10;
         }
         System.out.println("Il faut " + m + " itérations pour la 2ème méthode");

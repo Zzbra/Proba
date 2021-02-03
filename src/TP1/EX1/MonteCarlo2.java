@@ -6,13 +6,15 @@ import TP1.Util.Point2D;
 import java.awt.*;
 
 public class MonteCarlo2 {
-    public static double main(double n) {
-        double result = monteCarlo2(n,10);
+    public static double main(double n, boolean draw) {
+        double result = monteCarlo2(n,10, draw);
         return result;
     }
 
-    public static double monteCarlo2(double n, double r){
-        Drawer drawer = new Drawer(r);
+    public static double monteCarlo2(double n, double r, boolean draw){
+        Drawer drawer = null;
+        if(draw)
+            drawer = new Drawer(r);
         double c = 0;
         Color color = null;
         for (int i = 0; i < n; i++) {
@@ -23,7 +25,8 @@ public class MonteCarlo2 {
                 c++;
                 color = Color.cyan;
             }
-            drawer.draw(new Point2D(x, y), color);
+            if(draw)
+                drawer.draw(new Point2D(x, y), color);
         }
        return 4*c/n;
     }

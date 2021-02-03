@@ -11,10 +11,13 @@ import TP1.EX3.EX3;
 public class Main {
     // Les compaisons sont commentées car elles prennent un peu de temps
     public static void main(String[] args) throws InterruptedException {
-//        testExercice1();
+        System.out.println("Exercice 1:");
+        testExercice1();
 //        ComparaisonEx1.main(null);
-//        testExercice2();
+        System.out.println("\nExercice 2:");
+        testExercice2();
 //        ComparaisonEx2.main(null);
+        System.out.println("\nExercice 3:");
         testExercice3();
     }
 
@@ -23,7 +26,7 @@ public class Main {
         System.out.printf("Valeur de Pi avec 1ère méthode:\t");
         System.out.println(MonteCarlo1.main(n, true));
         System.out.printf("Valeur de Pi avec 2ème méthode:\t");
-        System.out.println(MonteCarlo2.main(n));
+        System.out.println(MonteCarlo2.main(n, true));
     }
 
     private static void testExercice2(){

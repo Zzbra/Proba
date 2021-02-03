@@ -10,15 +10,14 @@ public class MonteCarlo1 {
         Drawer drawer = null;
         if(draw)
             drawer = new Drawer(1);
-        long sleepTime = (long) 1;
         double s = 0;
         for (int i = 0; i < n; i++) {
             double x = Math.random();
             double y = Math.sqrt(1 - x*x);
             if(draw)
                 drawer.draw(new Point2D(x, y), Color.cyan);
-            if( i < 5000)
-                Thread.sleep(sleepTime);
+            if( i < 10000)
+                Thread.sleep(1);
             s += y;
         }
         return 4*s/n;
