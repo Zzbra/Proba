@@ -1,8 +1,9 @@
 package TP1.EX2;
 
 public class CalculE2 {
-    public static void main(String[] args) {
-        System.out.println(calculE(10_000_000));
+    public static double main(double n) {
+        double result = calculE(n);
+        return result;
     }
 
     private static double calculE(double M){

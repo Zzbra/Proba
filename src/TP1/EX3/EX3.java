@@ -1,30 +1,37 @@
 package TP1.EX3;
 
+import TP1.Util.Drawer;
+import TP1.Util.Point2D;
+import TP1.Util.PolygoneListe;
+import TP1.Util.SimplePolygonGenerator;
+
 import java.awt.*;
 
-public class Main {
-    public static void main(String[] args) {
-        double valeurMax = 100;
-        double valeursX[] = {0.25 * valeurMax, 0.25 * valeurMax, 0.75 * valeurMax, 0.75 * valeurMax};
-        double valeursY[] = {0.25 * valeurMax, 0.75 * valeurMax, 0.75 * valeurMax, 0.25 * valeurMax};
-
-        PolygoneListe polygoneListe = new PolygoneListe(valeursX, valeursY, valeurMax);
-//        PolygoneListe polygoneListe = SimplePolygonGenerator.genetatePolygon(50,1);
-        Drawer drawer = new Drawer();
+public class EX3 {
+    public static void main(Boolean carre, double valeurMax, int nbSommets) throws InterruptedException {
+       PolygoneListe polygoneListe = null;
+        if(carre){
+            double valeursX[] = {0.25 * valeurMax, 0.25 * valeurMax, 0.75 * valeurMax, 0.75 * valeurMax};
+            double valeursY[] = {0.25 * valeurMax, 0.75 * valeurMax, 0.75 * valeurMax, 0.25 * valeurMax};
+            polygoneListe = new PolygoneListe(valeursX, valeursY, valeurMax);
+        }else{
+            polygoneListe = SimplePolygonGenerator.genetatePolygon(50,valeurMax);
+        }
+        Drawer drawer = new Drawer(valeurMax);
         drawer.draw(polygoneListe);
-        polygoneListe.printSommets();
-        System.out.println("Monte Carlo: " + monteCarlo(polygoneListe, valeurMax, 10_000_000, drawer));
-        System.out.println("Lacet: " + formuleEnLacet(polygoneListe));
+        Thread.sleep(1000);
+        System.out.println("Monte Carlo:\t" + monteCarlo(polygoneListe, valeurMax, 10_000_000, drawer));
+        System.out.println("Lacet:\t\t\t" + formuleEnLacet(polygoneListe));
     }
 
     private static double monteCarlo(PolygoneListe polygoneListe, double valeurMax, double nbIterations, Drawer drawer){
         double c = 0;
         for (int i = 0; i < nbIterations; i++) {
             Point2D point = new Point2D(Math.random() * valeurMax, Math.random() * valeurMax);
-            Color color = Color.RED;
+            Color color = Color.LIGHT_GRAY;
             if(polygoneListe.contient(point)){
                 c++;
-                color = Color.GREEN;
+                color = Color.cyan;
             }
             drawer.draw(point, color);
         }

@@ -1,4 +1,4 @@
-package TP1.EX3;
+package TP1.Util;
 
 public class Point2D {
     private double x, y;

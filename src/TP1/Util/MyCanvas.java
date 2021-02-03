@@ -1,4 +1,4 @@
-package TP1.EX3;
+package TP1.Util;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +9,8 @@ public class MyCanvas {
     BufferedImage surface;
     int width, height;
     double valMax;
-    public MyCanvas(int width, int height){
+    public MyCanvas(int width, int height, double valMax){
+        this.valMax = valMax;
         this.width = width;
         this.height = height;
         surface = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -18,12 +19,11 @@ public class MyCanvas {
 
     public void drawPolygon(PolygoneListe polygoneListe){
         Graphics g = surface.getGraphics();
-        valMax = polygoneListe.getValeurMax();
         int[] xValues = new int[polygoneListe.size()];
         int[] yValues = new int[polygoneListe.size()];
         for (int i = 0; i < polygoneListe.size(); i++) {
-            xValues[i] = (int)(polygoneListe.getSommet(i).getX()* width/polygoneListe.getValeurMax());
-            yValues[i] = (int)(polygoneListe.getSommet(i).getY()*height/polygoneListe.getValeurMax());
+            xValues[i] = (int)(polygoneListe.getSommet(i).getX() / valMax * width);
+            yValues[i] = (int)(polygoneListe.getSommet(i).getY() / valMax * height);
         }
         Polygon polygon = new Polygon( xValues, yValues, polygoneListe.size());
         g.fillPolygon(polygon);

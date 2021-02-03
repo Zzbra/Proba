@@ -1,16 +1,17 @@
 package TP1.EX2;
 
-public class CalculE {
-    public static void main(String[] args) {
-        System.out.println(estimerE(10_000_000));
+public class CalculE1 {
+    public static double main(double n) {
+        double result = estimerE(n);
+        return result;
     }
 
-    private static double estimerE(double N){
+    private static double estimerE(double n){
         double somme = 0;
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             somme += findN();
         }
-        return somme/N;
+        return somme/n;
     }
 
     private static int findN(){

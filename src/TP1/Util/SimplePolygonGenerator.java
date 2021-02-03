@@ -1,4 +1,4 @@
-package TP1.EX3;
+package TP1.Util;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,9 +23,9 @@ public class SimplePolygonGenerator {
             double random =ThreadLocalRandom.current().nextDouble(0.1, 1);
             x *= random;
             y *= random;
-            xValues[i] = (x+1)/2;
-            yValues[i] = (y+1)/2;
+            xValues[i] = valMax * (x+1)/2;
+            yValues[i] = valMax * (y+1)/2;
         }
-        return  new PolygoneListe(xValues, yValues, 1);
+        return  new PolygoneListe(xValues, yValues, valMax);
     }
 }
