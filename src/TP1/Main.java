@@ -11,6 +11,7 @@ import TP1.EX3.EX3;
 public class Main {
     // Les compaisons sont commentées car elles prennent un peu de temps
     public static void main(String[] args) throws InterruptedException {
+        System.out.println("\nRésultats du TP\n");
         System.out.println("Exercice 1:");
         testExercice1();
 //        ComparaisonEx1.main(null);
