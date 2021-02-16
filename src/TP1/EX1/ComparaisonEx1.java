@@ -16,6 +16,5 @@ public class ComparaisonEx1 {
             m *= 10;
         }
         System.out.println("Il faut " + m + " itérations pour la 2ème méthode");
-
     }
 }

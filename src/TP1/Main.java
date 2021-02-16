@@ -20,6 +20,7 @@ public class Main {
 //        ComparaisonEx2.main(null);
         System.out.println("\nExercice 3:");
         testExercice3();
+//        System.exit(0);
     }
 
     private static void testExercice1() throws InterruptedException {
@@ -38,11 +39,14 @@ public class Main {
         System.out.println(CalculE2.main(n));
     }
     // Pour l'exercice 3, on peut faire varier la valeur max (xMax et yMax)
-    // et le nombre de sommets dans le cas du polygone
+    // le nombre d'itérations pour Monté Carlo et le nombre de sommets dans le cas du polygone
     private static void testExercice3() throws InterruptedException {
         System.out.printf("Méhode Monté Carlo et Lancet pour un carré:\n");
-        EX3.main(true, 100, 0, 10_000_000);
-        System.out.printf("Méhode Monté Carlo et Lancet pour un polygone simple généré aléatoirement:\n");
-        EX3.main(false, 100, 50, 10_000_000);
+        EX3.main(true, 100, 0, 10_000_000, false);
+        System.out.printf("\nMéhode Monté Carlo et Lancet pour un polygone simple généré aléatoirement:\n");
+        EX3.main(false, 100, 50, 10_000_000, false);
+        System.out.printf("\nMéhode Monté Carlo et Lancet pour un polygone à trou généré aléatoirement:\n");
+        System.out.println("Ne pas prendre en compte le résultat de la formule en Lacet");
+        EX3.main(false, 100, 50, 10_000_000, true);
     }
 }

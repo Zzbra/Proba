@@ -84,9 +84,9 @@ public class PolygoneListe {
         int o1 = orientation(p1, p2, q1);
         // Deux sommets et extrême
         int o2 = orientation(p1, p2, q2);
-        // Point, extrême et sommet1
+        // TP2_Willy.Point, extrême et sommet1
         int o3 = orientation(q1, q2, p1);
-        // Point, extrême et sommet 2
+        // TP2_Willy.Point, extrême et sommet 2
         int o4 = orientation(q1, q2, p2);
 
         // Il y à croisement car le point et son extrême sont de pars et d'autre du segment entre les deux sommets

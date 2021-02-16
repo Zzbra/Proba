@@ -16,7 +16,7 @@ public class MonteCarlo1 {
             double y = Math.sqrt(1 - x*x);
             if(draw)
                 drawer.draw(new Point2D(x, y), Color.cyan);
-            if( i < 10000)
+            if( i < 4000)
                 Thread.sleep(1);
             s += y;
         }

@@ -6,7 +6,7 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class SimplePolygonGenerator {
-    public static PolygoneListe genetatePolygon(int nbSommets, double valMax){
+    public static PolygoneListe genetatePolygon(int nbSommets, double valMax, boolean polyTrou){
         double[] xValues =  new double[nbSommets];
         double[] yValues = new double[nbSommets];
         ArrayList<Double> radValues = new ArrayList<>();
@@ -15,7 +15,8 @@ public class SimplePolygonGenerator {
             double rad = (10 * r.nextDouble())%(2*Math.PI);
             radValues.add(rad);
         }
-        Collections.sort(radValues);
+        if(!polyTrou)
+            Collections.sort(radValues);
         for (int i = 0; i < nbSommets; i++) {
             double radval = radValues.get(i);
             double x = Math.cos(radval);

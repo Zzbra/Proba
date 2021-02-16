@@ -8,21 +8,21 @@ import TP1.Util.SimplePolygonGenerator;
 import java.awt.*;
 
 public class EX3 {
-    public static void main(Boolean carre, double valeurMax, int nbSommets, int nbItMonte) throws InterruptedException {
+    public static void main(Boolean carre, double valeurMax, int nbSommets, int nbItMonte, boolean polyTrou) throws InterruptedException {
        PolygoneListe polygoneListe = null;
         if(carre){
             double valeursX[] = {0.25 * valeurMax, 0.25 * valeurMax, 0.75 * valeurMax, 0.75 * valeurMax};
             double valeursY[] = {0.25 * valeurMax, 0.75 * valeurMax, 0.75 * valeurMax, 0.25 * valeurMax};
             polygoneListe = new PolygoneListe(valeursX, valeursY, valeurMax);
         }else{
-            polygoneListe = SimplePolygonGenerator.genetatePolygon(nbSommets,valeurMax);
+            polygoneListe = SimplePolygonGenerator.genetatePolygon(nbSommets,valeurMax, polyTrou);
         }
         Drawer drawer = new Drawer(valeurMax);
         drawer.draw(polygoneListe);
-        monteCarlo(polygoneListe, valeurMax, 10_000_000, drawer, true);
+//        monteCarlo(polygoneListe, valeurMax, nbItMonte, drawer, true);
         double debutMonte = System.currentTimeMillis();
         System.out.printf("Monte Carlo:\ttemps = ");
-        double aireMonte = monteCarlo(polygoneListe, valeurMax, 10_000_000, drawer, false);
+        double aireMonte = monteCarlo(polygoneListe, valeurMax, nbItMonte, drawer, true);
         double tempsMonte = System.currentTimeMillis() - debutMonte;
         System.out.println(tempsMonte + "ms \tAire =" + aireMonte);
 
