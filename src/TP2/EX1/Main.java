@@ -13,6 +13,7 @@ package TP2.EX1;
     92: 95.21
  */
 
+import java.awt.*;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
@@ -20,8 +21,10 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException, InterruptedException {
         System.setProperty("org.graphstream.ui", "swing");
 //        testItenfcNbSommet(100, 10);
-//        testTempsCouverture();
-        testQuestion1();
+        testTempsCouverture();
+//        testQuestion1();
+//        testChemin();
+//        testGrille();
     }
 
     private static void testQuestion1() throws FileNotFoundException, InterruptedException {
@@ -31,8 +34,27 @@ public class Main {
         System.out.println(graphe.marcheAleatoire(10));
     }
 
+    private static void testGrille() throws FileNotFoundException, InterruptedException {
+        Graphe graphe = Graphe.genererGrille(5,5);
+        graphe.afficherGraphe();
+        graphe.colorerPointsGrille(5);
+        Thread.sleep(3000);
+        System.out.println(graphe.marcheAleatoireGrille(5));
+    }
+
+    private static void testChemin() throws FileNotFoundException {
+        Graphe graphe = Graphe.genererGrapheAvecChemin(10, 5, 1);
+        graphe.afficherGraphe();
+    }
+
     private static void testTempsCouverture() throws FileNotFoundException {
-        Graphe graphe = Graphe.genererGraphe(50, 1);
+        Graphe graphe = Graphe.genererGraphe(15, 1);
+        graphe.afficherGraphe();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         System.out.println(graphe.tempsCouverture());
     }
 

@@ -27,6 +27,10 @@ public class Sommet {
         }
     }
 
+    public ArrayList<Sommet> getVoisins() {
+        return voisins;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
